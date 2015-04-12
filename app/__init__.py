@@ -12,7 +12,7 @@ app.config['DATABASE'] = {
 	'name': 'hackathon',
 	'engine': 'peewee.MySQLDatabase',
 	'user': 'root',
-	'passwd': 'algebra2'
+	'passwd': 'pass'
 }
 app.config['SECRET_KEY'] = 'development key';
 db = Database(app)

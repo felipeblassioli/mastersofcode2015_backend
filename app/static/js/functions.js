@@ -103,7 +103,37 @@ function send(e){
         contentType: 'application/json',
         data: data,
         success: function () {
-        	
+        	toggleConfirmation();
         }
     })
+}
+
+function toggleConfirmation() {
+	if ($(".overlay").hasClass('hidden')) {
+		$(".overlay").animate(
+			{ 'opacity', 1 }, 
+			{ complete: function() {
+					$(".overlay").removeClass('hidden');
+				}
+			});
+		$(".confirmation").animate(
+			{ 'opacity', 1 }, 
+			{ complete: function() {
+					$(".confirmation").removeClass('hidden');
+				}
+			})
+	} else {
+		$(".overlay").animate(
+			{ 'opacity', 0 }, 
+			{ complete: function() {
+					$(".overlay").addClass('hidden');
+				}
+			});
+		$(".confirmation").animate(
+			{ 'opacity', 0 }, 
+			{ complete: function() {
+					$(".confirmation").addClass('hidden');
+				}
+			})
+	}
 }
