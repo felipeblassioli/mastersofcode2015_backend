@@ -64,6 +64,7 @@ def transaction(user_id):
 @rest.route('/user/pay')
 def pay_invoic():
 	# Yes, that's a get. The time is short
+	print request.args
 	card_number = request.args.get("card_number", "5555555555554444")
 	invoice_id = request.args.get("invoice_id")
 	customer_id = request.args.get("customer_id")
@@ -74,6 +75,5 @@ def pay_invoic():
 		usr = User.get(User.id == 1)
 	usr.pay(invoice_id, card_number)
 
-	current_user = dict(name='North Buy', image='', categories=['food', 'restaurant'])
-	return render_template('transaction.html', user=current_user, products=products, customer=customer)
+	return "Ok"
 
