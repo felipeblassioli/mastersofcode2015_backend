@@ -1,5 +1,5 @@
 from flask import *
-
+from .services import *
 
 def create_tablet_blueprint():
 	tablet = Blueprint('tablet', __name__, template_folder='templates')
@@ -9,4 +9,7 @@ tablet = create_tablet_blueprint()
 
 @tablet.route('/')
 def index():
-	return render_template('index.html')
+	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
+	users = [ u for u in User.select() ]
+	products = [ p for p in Product.select() ]
+	return render_template('index.html', user=current_user, users=users, products=products)

@@ -1,0 +1,11 @@
+.navbar {
+	background: #FFC107;
+}
+.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+	color: white;
+}
+.half {
+	width: 49%;
+	display: inline-block;
+	vertical-align: top;
+}

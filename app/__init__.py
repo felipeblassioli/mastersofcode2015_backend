@@ -9,6 +9,7 @@ def bla():
 
 def create_app():
 	app = Flask(__name__)
+	app.config["SECRET_KEY"] = 'development key'
 	from .tablet import tablet
 	app.register_blueprint(tablet, url_prefix='/tablet')
 
@@ -16,7 +17,7 @@ def create_app():
 	app.register_blueprint(rest, url_prefix='/rest')
 	app.before_first_request(bla)
 
-	from .services import init_app, User, Invoice
+	from .services import init_app, User, Invoice, Product
 	init_app(app)
 
 	import logging
@@ -28,7 +29,7 @@ def create_app():
 	from flask.ext.admin.contrib.peewee import ModelView
 	admin = Admin(app, name="Bla")
 
-	for m in [User,Invoice]:
+	for m in [User,Invoice,Product]:
 		admin.add_view(ModelView(m))
 	return app
 

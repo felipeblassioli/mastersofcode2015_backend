@@ -53,6 +53,11 @@ class User(BaseModel):
 		)
 		return ret
 
+class Product(BaseModel):
+	name = CharField()
+	price = CharField()
+	image_url = CharField(null=True)
+
 class Invoice(BaseModel):
 	invoice_id = CharField()
 	user = ForeignKeyField(User, related_name='invoices2')
@@ -86,7 +91,7 @@ def after_request_handler(*args,**kwargs):
 	db.close()
 
 def setup_db():
-	for m in [User, Invoice]:
+	for m in [User, Invoice, Product]:
 		m.create_table(True)
 
 def init_app(app):
