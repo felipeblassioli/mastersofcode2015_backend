@@ -56,6 +56,11 @@ class User(BaseModel):
 
 	def pay(self, invoice_id, card_number):
 		#invoice = simplify.Invoice.find(invoice_id)
+		print invoice_id
+		print card_number
+		print self.customer_id
+		print '-x-x-x-x-x--x-x-x'
+		#invoice = simplify.Invoice.find(invoice_id)
 		cardToken = simplify.CardToken.create({
 			"card":{
 				"expMonth": "10",
@@ -65,10 +70,11 @@ class User(BaseModel):
 		})
 		payment = simplify.Payment.create({
 			"token" : cardToken['id'],
-			#"invoice_id": invoice_id,
+			"invoice_id": invoice_id,
 			"description" : "teste",
 			"currency" : "USD"
 		})
+		print payment.paymentStatus, 'status'
 
 class Product(BaseModel):
 	name = CharField()
