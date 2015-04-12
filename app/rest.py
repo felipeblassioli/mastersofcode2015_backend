@@ -59,7 +59,8 @@ def transaction(user_id):
 	customer = User.get(User.id == user_id)
 
 	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
-	return render_template('transaction.html', user=current_user, products=products, customer=customer)
+	user_id = User.select()[0].id
+	return render_template('transaction.html', user=current_user, products=products, customer=customer, user_id=user_id)
 
 @rest.route('/user/pay')
 def pay_invoic():
