@@ -11,12 +11,19 @@ rest = create_rest_blueprint()
 def index():
 	return "Hello"
 
+@rest.route('/user/<user_id>', methods=['GET'])
+@rest.route('/user/', methods=['POST'])
+def users_index(user_id=None):
+	if request.method == 'GET':
+		return User.get(User.id == user_id)
+	elif request.method == 'POST':
+		params = request.get_json()
+		print 'params', params
+		usr = User.create(**params)
+		print usr
+		return jsonify(usr.to_json())
 
-@rest.route('/users/', methods=['GET','POST'])
-def users_index():
-	return jsonify(dict(bla=User()))
-
-@rest.route('/users/payments/', methods=['GET','POST'])
+@rest.route('/user/payments/', methods=['GET','POST'])
 def payments():
 	if request.method == 'GET':
 		pass

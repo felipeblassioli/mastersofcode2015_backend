@@ -4,24 +4,11 @@ from flask import Flask, Blueprint, render_template, request
 
 from flask import current_app
 def bla():
-	print current_app.url_map
-
-from flask.json import JSONEncoder
-class CustomJSONEncoder(JSONEncoder):
-	def default(self, obj):
-		if hasattr(obj, 'to_json'):
-			return obj.to_json()
-		try:
-			iterable = iter(obj)
-		except TypeError:
-			pass
-		else:
-			return list(iterable)
-		return JSONEncoder.default(self, obj)
+	pass
+	#print current_app.url_map
 
 def create_app():
 	app = Flask(__name__)
-	app.json_encoder = CustomJSONEncoder
 	from .tablet import tablet
 	app.register_blueprint(tablet, url_prefix='/tablet')
 
@@ -31,5 +18,10 @@ def create_app():
 
 	from .services import init_app
 	init_app(app)
+
+	import logging
+	logger = logging.getLogger('peewee')
+	logger.setLevel(logging.DEBUG)
+	logger.addHandler(logging.StreamHandler())
 	return app
 
