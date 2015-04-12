@@ -28,5 +28,8 @@ def create_app():
 	from .rest import rest
 	app.register_blueprint(rest, url_prefix='/rest')
 	app.before_first_request(bla)
+
+	from .services import init_app
+	init_app(app)
 	return app
 
