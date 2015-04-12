@@ -1,10 +1,10 @@
 from peewee import *
 
 from flask import current_app
-db = SqliteDatabase('people.db')
-
-
-class BaseModel(Model):
+from . import db
+#db = SqliteDatabase('people.db')
+#db = MySQLDatabase("hackathon", user="root", passwd="algebra2")
+class BaseModel(db.Model):
 	def to_json(self):
 		return self.__dict__['_data']
 
@@ -14,8 +14,8 @@ class BaseModel(Model):
 	def __repr__(self):
 		return str(self)
 
-	class Meta:
-		database = db
+	# class Meta:
+	# 	database = db
 
 import simplify
 simplify.public_key = "sbpb_MjM2NWQ2MmUtZWVmZC00Nzk1LTg2ZDctMzUzMDE0ZjE5YzEz"
@@ -83,14 +83,16 @@ def before_request_handler():
 
 def after_request_handler(*args,**kwargs):
 	print args, kwargs
-	db.close()
+	if db is not None:
+		db.close()
 
 def setup_db():
 	for m in [User, Invoice]:
 		m.create_table(True)
 
+#app.before_first_request(setup_db)
 def init_app(app):
-	app.before_first_request(setup_db)
+
 	app.before_request(before_request_handler)
 	#app.after_request(after_request_handler)
 	app.teardown_request(after_request_handler)

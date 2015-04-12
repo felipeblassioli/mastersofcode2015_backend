@@ -17,5 +17,6 @@ setup(
         'flask-classy>=0.6.8',
         'simplifycommerce-sdk-python',
         'Flask-Admin',
+        'PyMySQL'
     ],
 )

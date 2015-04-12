@@ -1,5 +1,6 @@
 from flask import *
 from .services import *
+from . import app
 
 def create_rest_blueprint():
 	rest = Blueprint('rest', __name__)

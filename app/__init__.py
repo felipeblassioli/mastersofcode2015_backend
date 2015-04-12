@@ -1,34 +1,46 @@
 # encoding: utf-8
 from flask import Flask, Blueprint, render_template, request
-
+from flask_peewee.db import Database
+1
 
 from flask import current_app
 def bla():
 	#print current_app.url_map
 	pass
 
-def create_app():
-	app = Flask(__name__)
-	from .tablet import tablet
-	app.register_blueprint(tablet, url_prefix='/tablet')
 
-	from .rest import rest
-	app.register_blueprint(rest, url_prefix='/rest')
-	app.before_first_request(bla)
+app = Flask(__name__)
+app.config['DATABASE'] = {
+	'name': 'hackathon',
+	'engine': 'peewee.MySQLDatabase',
+	'user': 'root',
+	'passwd': 'algebra2'
+}
+db = Database(app)
 
-	from .services import init_app, User, Invoice
-	init_app(app)
+from .tablet import tablet
+app.register_blueprint(tablet, url_prefix='/tablet')
 
-	import logging
-	logger = logging.getLogger('peewee')
-	logger.setLevel(logging.DEBUG)
-	logger.addHandler(logging.StreamHandler())
+from .rest import rest
+app.register_blueprint(rest, url_prefix='/rest')
+app.before_first_request(bla)
 
-	from flask.ext.admin import Admin
-	from flask.ext.admin.contrib.peewee import ModelView
-	admin = Admin(app, name="Bla")
 
-	for m in [User,Invoice]:
-		admin.add_view(ModelView(m))
-	return app
+from .services import init_app, User, Invoice, setup_db
+app.before_first_request(setup_db)
+
+#init_app(app)
+#db.init_app(app) 
+
+import logging
+logger = logging.getLogger('peewee')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+
+from flask.ext.admin import Admin
+from flask.ext.admin.contrib.peewee import ModelView
+admin = Admin(app, name="Bla")
+
+for m in [User,Invoice]:
+	admin.add_view(ModelView(m))
 

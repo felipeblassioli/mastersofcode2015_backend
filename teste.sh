@@ -1,0 +1,1 @@
+curl http://127.0.0.1:5000/rest/user/1/invoice/ -X POST -H 'content-type: application/json' -d'{"list_items": [{"amount": "100.5", "quantity": "2", "description": "bla bla Nome Produto" }]}'
