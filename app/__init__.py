@@ -1,13 +1,11 @@
 # encoding: utf-8
 from flask import Flask, Blueprint, render_template, request
 from flask_peewee.db import Database
-1
 
 from flask import current_app
 def bla():
 	#print current_app.url_map
 	pass
-
 
 app = Flask(__name__)
 app.config['DATABASE'] = {
@@ -26,7 +24,7 @@ app.register_blueprint(rest, url_prefix='/rest')
 app.before_first_request(bla)
 
 
-from .services import init_app, User, Invoice, setup_db
+from .services import init_app, User, Invoice, setup_db, Product
 app.before_first_request(setup_db)
 
 #init_app(app)
@@ -41,6 +39,5 @@ from flask.ext.admin import Admin
 from flask.ext.admin.contrib.peewee import ModelView
 admin = Admin(app, name="Bla")
 
-for m in [User,Invoice]:
+for m in [User,Invoice,Product]:
 	admin.add_view(ModelView(m))
-

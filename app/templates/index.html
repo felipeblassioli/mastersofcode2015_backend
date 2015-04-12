@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	Hello World!
+<div class="container">
+	<div id="customers" class="half">
+	<h1>MasterPay clients nearby</h1>
+		{% if users|length > 0 %}
+			{% for u in users %}
+				{{ render_user(u) }}
+			{% endfor %}
+		{% else %}
+			<span>No clients found. Try searching for client name or email.</span>
+		{% endif %}
+	</div>
+	<div id="my_products" class="half">
+		{% for p in products %}
+			{{p}}
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}
