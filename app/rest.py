@@ -58,3 +58,16 @@ def transaction(user_id):
 	customer = User.get(User.id == user_id)
 	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
 	return render_template('transaction.html', user=current_user, products=products, customer=customer)
+
+@rest.route('/user/pay')
+def pay_invoic():
+	# Yes, that's a get. The time is short
+	card_number = request.args.get("card_number", "5555555555554444")
+	invoice_id = request.args.get("invoice_id")
+	customer_id = request.args.get("customer_id")
+	try:
+		usr = User.get(User.customer_id == customer_id)
+	except User.DoesNotExist:
+		# Desperate for demo
+		usr = User.get(User.id == 1)
+	usr.pay(invoice_id, card_number)
