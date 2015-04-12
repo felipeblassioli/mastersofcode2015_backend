@@ -70,19 +70,31 @@ function updateSum() {
 }
 
 function send(e){
-	var answer = new Object();
+	var answer = {};
 	answer.memo = "North Buy";
 	answer.list_items = new Array();
 	var listItems = $("#transaction_customer .ovf-list li");
 	for (var i = 0; i < listItems.length; i++) {
-		var item = new Object();
+		var item = {};
 		if ($(listItems[i]).find(".product-image img").length > 0) {
 			item.name = $(listItems[i]).find(".product-image img").attr('src'); 
 		};
 		item.description = $(listItems[i]).find(".product-name").html();
-		item.quantity = parseFloat($(listItems[i]).find(".product-qty").html().replace(/[^0-9.,]/g, ''));
-		item.amount = parseFloat($(listItems[i]).find(".product-price").html().replace(/[^0-9.,]/g, ''))
+		item.quantity = $(listItems[i]).find(".product-qty").html().replace(/[^0-9.,]/g, '');
+		item.amount = $(listItems[i]).find(".product-price").html().replace(/[^0-9.,]/g, '');
 		answer.list_items.push(item);
 	}
-	jQuery.post("'/user/1/invoice/'", answer);
+	console.log(answer);
+	$.ajax
+    ({
+        type: "POST",
+        url: "/rest/user/2/invoice/",
+        dataType: 'json',
+        contentType: 'application/json',
+        async: false,
+        data: answer,
+        success: function () {
+
+        }
+    })
 }
