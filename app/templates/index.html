@@ -8,6 +8,7 @@
 	<div id="customers" class="half">
 		<input type="text" class="customer-search" placeholder="Search customers by name or email">
 		<h1>MasterPay clients nearby</h1>
+		<span class="descript">click on a client to start a transaction</span>
 		<ul class="ovf-list">
 		{% if users|length > 0 %}
 			{% for u in users %}

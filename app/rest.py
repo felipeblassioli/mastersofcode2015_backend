@@ -56,5 +56,5 @@ from .services import Product
 def transaction(user_id):
 	products = [ p for p in Product.select() ]
 	customer = User.get(User.id == user_id)
-	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
+	current_user = dict(name='North Buy', image='', categories=['food', 'restaurant'])
 	return render_template('transaction.html', user=current_user, products=products, customer=customer)
