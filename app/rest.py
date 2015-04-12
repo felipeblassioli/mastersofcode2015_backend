@@ -40,6 +40,7 @@ def payments():
 
 @rest.route('/user/<user_id>/invoice/', methods=['GET','POST'])
 def invoices(user_id):
+	print 'hello', request.values
 	user = User.get(User.id == user_id)
 	if request.method == 'GET':
 		invs = [ i.to_json() for i in user.invoices2 ]
