@@ -1,0 +1,40 @@
+{
+  "businessAddress": {
+    "name": "Felipe Blassioli"
+  }, 
+  "currency": "USD", 
+  "customer": {
+    "email": "felipeblassioli@gmail.com", 
+    "id": "44RoL7qX", 
+    "name": "Felipe Blassioli", 
+    "object_id": "44RoL7qX"
+  }, 
+  "dateCreated": 1428792232520, 
+  "id": "Mnrxyd5R", 
+  "invoiceDate": 1428792232512, 
+  "invoiceId": "1", 
+  "isLate": false, 
+  "items": [
+    {
+      "amount": 5504, 
+      "dateCreated": 1428792232549, 
+      "id": "XX8ELGgz", 
+      "quantity": 1, 
+      "totalAmount": 5504
+    }
+  ], 
+  "memo": "This is a memo", 
+  "note": "This is a note", 
+  "object_id": "Mnrxyd5R", 
+  "reference": "Ref2", 
+  "status": "DRAFT", 
+  "subTotal": 5504, 
+  "suppliedDate": 2394839384000, 
+  "total": 5504, 
+  "totalDiscount": 0, 
+  "totalFees": 0, 
+  "totalTax": 0, 
+  "type": "WEB", 
+  "uuid": "76cd7f93-0d34-445f-837a-35a2f52557b1"
+}
+[Finished in 6.7s]
