@@ -56,6 +56,7 @@ from .services import Product
 def transaction(user_id):
 	products = [ p for p in Product.select() ]
 	customer = User.get(User.id == user_id)
+<<<<<<< HEAD
 	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
 	return render_template('transaction.html', user=current_user, products=products, customer=customer)
 
@@ -71,3 +72,7 @@ def pay_invoic():
 		# Desperate for demo
 		usr = User.get(User.id == 1)
 	usr.pay(invoice_id, card_number)
+=======
+	current_user = dict(name='North Buy', image='', categories=['food', 'restaurant'])
+	return render_template('transaction.html', user=current_user, products=products, customer=customer)
+>>>>>>> b033e29207d8f7f6cdec1eafa192e7cc670da03a

@@ -59,7 +59,7 @@ a, a:hover, a:focus {
 	background-position: 10px center;
 }
 
-.customer-card {
+.customer-card, .transaction-product-card {
 	background: none repeat scroll 0% 0% #FFF;
 	box-sizing: border-box !important;
 	-moz-box-sizing: border-box !important;
@@ -70,18 +70,18 @@ a, a:hover, a:focus {
 	margin-bottom: 10px;
 }
 
-.customer-card a {
+.customer-card a, .transaction-product-card a {
 	width: 100%;
 	height: 100%;
 }
 
-.customer-card:hover, .transaction-product-search:hover {
+.customer-card:hover, .transaction-product-card:hover {
 	transition: 0.5s;
 	background-color: #fdfdfd;
 	box-shadow: 4px 4px 4px rgba(0,0,0,0.15);
 }
 
-.customer-card .customer-name, .transaction-product-search .product-name {
+.customer-card .customer-name, .transaction-product-card .product-name {
 	display: inline-block;
 	color: #FFc107;
 	margin: 0;
@@ -89,14 +89,14 @@ a, a:hover, a:focus {
 	margin-right: 20px;
 }
 
-.customer-card .customer-id, .transaction-product-search .product-id, .product-card .product-id {
+.customer-card .customer-id, .product-card .product-id, .transaction-product-card .product-id {
 	display: inline-block;
 	font-weight: bold;
 	color: #aaaaaa;
 	margin-right: 20px;
 }
 
-.customer-card .customer-mail, .transaction-product-search .product-price {
+.customer-card .customer-mail {
 	margin-top: 10px;
 	font-weight: lighter;
 }
@@ -148,7 +148,7 @@ a, a:hover, a:focus {
 	border-bottom: 1px solid #EAEAEA;
 }
 
-.product-card .product-image {
+.product-image {
 	width: 40px;
 	height: 40px;
 	display: block;
@@ -209,10 +209,89 @@ ul {
 }
 
 .half .ovf-list {
-	max-height: 95%;
+	height: 95%;
 	overflow-y: auto;
 }
 
 .navbar-brand .glyphicon {
 	margin-right: 15px;
+}
+
+#transaction_products .ovf-list {
+	height: 55%;
+}
+
+.transaction-product-input {
+	margin-right: 40px;
+	border-radius: 0px;
+	border: 1px solid #CCC;
+	padding: 10px 10px 10px 40px;
+	margin-bottom: 20px;
+	width: 90%;
+}
+
+#prod-name {
+	width: 57%;
+	display: inline-block;
+	margin-right: 0;
+	padding: 10px;
+}
+
+#prod-price {
+	width: 25%;
+	margin-left: 2%;
+	display: inline-block;
+	margin-right: 0;
+	padding: 10px;
+}
+
+.product-qty {
+	width: 35px;
+	margin-top: 10px;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.product-card .product-qty {
+	color: #777;
+	margin-left: 15px;
+	font-size: 12px;
+}
+
+.transaction-product-card .product-price {
+	display: inline-block;
+}
+
+.flat-btn {
+	text-transform: uppercase;
+	float: right;
+	line-height: 20px;
+	height: 20px !important;
+	width: 30px !important;
+	font-size: 12px;
+	margin-top: 15px;
+	color: #009688;
+	font-weight: bold;
+}
+
+.descript {
+	margin-bottom: 15px;
+	display: block;
+	font-weight: lighter;
+	margin-top: -7px;
+	color: #777;
+}
+
+#transaction_customer .ovf-list {
+	height: 85%;
+}
+
+.transaction-total {
+	display: block;
+	padding-top: 10px;
+	border-top: 1px solid #EEE;
+}
+
+.transaction-total .flat-btn {
+	margin-top: 0;
 }

@@ -11,7 +11,7 @@
 
 <div class="container">
 	<div id="transaction_products" class="half">
-		<h1>Click to add the product to the customer cart</h1>
+		<h1>Add products to the customer cart</h1>
 		<input type="text" class="transaction-product-search" placeholder="Search products by name or id">
 		<ul class="ovf-list">
 		{% for p in products %}
@@ -19,12 +19,21 @@
 		{% endfor %}
 		</ul>
 		<h1>Or add a custom product</h1>
-		<input type="text" class="transaction-product-search" placeholder="Search products by name or id">
+		<input type="text" id="prod-name" class="transaction-product-input" placeholder="Product name">
+		<input type="text" id="prod-price" class="transaction-product-input" onkeyup="removeLetters($(this))" placeholder="Item price">
+		<span id="transaction_add" class="glyphicon glyphicon-plus btn" title="Click to add custom product" onclick="addCustomProd($('#prod-name'),$('#prod-price'))"></span>
 	</div>
 	<div id="transaction_customer" class="half">
 		<span class="header">
 			<span class="glyphicon glyphicon-shopping-cart"></span><h1>{{customer.name}}</h1>
 		</span>
+		<ul class="ovf-list">
+		</ul>
+		<div class="transaction-total">
+			<span class="transaction-total-label">Total</span>
+			<span class="transaction-total-value">U$00.00</span>
+			<a href="#" class="flat-btn" title="Send" onclick="send($(this));">Send</a>
+		</div>
 	</div>
 </div>
 {% endblock %}
