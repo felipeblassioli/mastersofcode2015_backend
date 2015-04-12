@@ -1,21 +1,34 @@
 {% extends 'base.html' %}
 
+{% block page_name %}<a class="navbar-brand" href="#">MasterPay</a>{% endblock %}
+
 {% block content %}
+
 <div class="container">
 	<div id="customers" class="half">
-	<h1>MasterPay clients nearby</h1>
+		<input type="text" class="customer-search" placeholder="Search customers by name or email">
+		<h1>MasterPay clients nearby</h1>
+		<ul class="ovf-list">
 		{% if users|length > 0 %}
 			{% for u in users %}
 				{{ render_user(u) }}
 			{% endfor %}
 		{% else %}
-			<span>No clients found. Try searching for client name or email.</span>
+			<span>No clients found. Try searching by customer name or email.</span>
 		{% endif %}
+		</ul>
 	</div>
 	<div id="my_products" class="half">
+		<span class="header">
+			<span class="glyphicon glyphicon-tags"></span><h1>My products</h1>
+			<span class="glyphicon glyphicon-plus btn" title="Click to add new products"></span>
+			<span class="glyphicon glyphicon-search btn" title="Click to search for a product name or id"></span>
+		</span>
+		<ul class="ovf-list">
 		{% for p in products %}
-			{{p}}
+			{{ render_product(p) }}
 		{% endfor %}
+		</ul>
 	</div>
 </div>
 {% endblock %}

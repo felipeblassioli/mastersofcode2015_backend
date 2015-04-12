@@ -1,11 +1,218 @@
-.navbar {
-	background: #FFC107;
+body {
+	background: #efefef;
+	font-family: 'Roboto', Helvetica, Arial;
 }
+
+a, a:hover, a:focus {
+	color: #333;
+	text-decoration: none;
+}
+
+.navbar {
+	background: #c62828;
+	box-shadow: 2px 2px 1px rgba(0,0,0,.1);
+	border: none !important;
+}
+
 .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
 	color: white;
 }
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
+	color: #ddd;
+}
+
 .half {
+	box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
 	width: 49%;
 	display: inline-block;
 	vertical-align: top;
+}
+
+.half h1 {
+	font-size: 22px;
+	color: #555;
+	font-weight: lighter;
+	margin: 0 0 15px 0;
+}
+
+.customer-search, .transaction-product-search {
+	margin-right: 40px;
+	border-radius: 0;
+	border: 1px solid #CCC;
+	padding: 10px;
+	padding-left: 40px;
+	margin-bottom: 20px;
+	width: 90%;
+}
+
+.customer-search {
+	background: url('../images/customer_search.png') no-repeat white;
+	background-size: 20px 20px;
+	background-position: 10px center;
+}
+
+.transaction-product-search {
+	background: url('../images/product_search.png') no-repeat white;
+	background-size: 20px 20px;
+	background-position: 10px center;
+}
+
+.customer-card {
+	background: none repeat scroll 0% 0% #FFF;
+	box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	border-radius: 5px;
+	padding: 15px;
+	width: 90%;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+	margin-bottom: 10px;
+}
+
+.customer-card a {
+	width: 100%;
+	height: 100%;
+}
+
+.customer-card:hover, .transaction-product-search:hover {
+	transition: 0.5s;
+	background-color: #fdfdfd;
+	box-shadow: 4px 4px 4px rgba(0,0,0,0.15);
+}
+
+.customer-card .customer-name, .transaction-product-search .product-name {
+	display: inline-block;
+	color: #FFc107;
+	margin: 0;
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+.customer-card .customer-id, .transaction-product-search .product-id, .product-card .product-id {
+	display: inline-block;
+	font-weight: bold;
+	color: #aaaaaa;
+	margin-right: 20px;
+}
+
+.customer-card .customer-mail, .transaction-product-search .product-price {
+	margin-top: 10px;
+	font-weight: lighter;
+}
+
+#my_products, #transaction_customer {
+	background: #FFF !important;
+	height: 85%;
+	float: right;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.15);
+	padding: 20px;
+}
+
+#my_products .header, #transaction_customer .header {
+	display: block;
+	margin: -20px;
+	margin-bottom: 0;
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+#my_products h1, #transaction_customer h1 {
+	display: inline-block;
+	margin-left: 20px;
+	margin-bottom: 0;
+}
+
+#my_products .header .glyphicon, #transaction_customer .header .glyphicon {
+	font-size: 20px;
+}
+
+#my_products .btn, #transaction_customer .btn {
+	float: right;
+	border-radius: 100%;
+	margin-top: -10px;
+	margin-left: 15px;
+}
+
+#my_products .btn.glyphicon-plus, #transaction_customer .btn.glyphicon-plus {
+	color: #FFc107;
+}
+
+#my_products .btn:hover, #transaction_customer .btn:hover {
+	transition: 0.5s;
+	background-color: #f4f4f4;
+}
+
+.product-card {
+	padding: 15px 0px;
+	border-bottom: 1px solid #EAEAEA;
+}
+
+.product-card .product-image {
+	width: 40px;
+	height: 40px;
+	display: block;
+	float: left;
+	overflow: hidden;
+	border-radius: 100%;
+	background-color: #EEE;
+	margin-right: 15px;
+}
+
+.product-image img {
+	width: 100%;
+	height: auto;
+	padding: 3px;
+}
+
+.product-image .upload {
+	display: block;
+	background: url(../images/upload.png) no-repeat no-repeat;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	background-size: 70%;
+}
+
+.product-card .product-name {
+	font-size: 16px;
+	margin: 0;
+	margin-right: 20px;
+	font-weight: normal;
+	display: inline-block;
+}
+
+.product-card .product-price {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 18px;
+	color: #c62828;
+}
+
+.product-card a {
+    text-transform: uppercase;
+	font-size: 11px;
+	float: right;
+	margin-left: 15px;
+}
+
+.product-card a.lighter {
+	color: #999;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	padding: 0;
+}
+
+.half .ovf-list {
+	max-height: 95%;
+	overflow-y: auto;
+}
+
+.navbar-brand .glyphicon {
+	margin-right: 15px;
 }

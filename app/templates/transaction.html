@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block page_name %}
+	<a class="navbar-brand" href="/tablet">
+		<span class="glyphicon glyphicon-arrow-left"></span>
+		Transaction
+	</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div id="transaction_products" class="half">
+		<h1>Click to add the product to the customer cart</h1>
+		<input type="text" class="transaction-product-search" placeholder="Search products by name or id">
+		<ul class="ovf-list">
+		{% for p in products %}
+			{{ render_transaction_product(p) }}
+		{% endfor %}
+		</ul>
+		<h1>Or add a custom product</h1>
+		<input type="text" class="transaction-product-search" placeholder="Search products by name or id">
+	</div>
+	<div id="transaction_customer" class="half">
+		<span class="header">
+			<span class="glyphicon glyphicon-shopping-cart"></span><h1>{{customer.name}}</h1>
+		</span>
+	</div>
+</div>
+{% endblock %}

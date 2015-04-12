@@ -48,3 +48,11 @@ def invoices(user_id):
 		listItems = request.get_json()['list_items']
 		invoice = user.send_invoice(listItems)
 		return jsonify(invoice.to_json())
+
+from .services import Product
+@rest.route('/user/<user_id>/transaction')
+def transaction(user_id):
+	products = [ p for p in Product.select() ]
+	customer = User.get(User.id == user_id)
+	current_user = dict(name='Test01', image='', categories=['food', 'restaurant'])
+	return render_template('transaction.html', user=current_user, products=products, customer=customer)
