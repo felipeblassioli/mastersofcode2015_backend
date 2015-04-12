@@ -40,10 +40,11 @@ class User(BaseModel):
 		ret.save()
 		return ret
 
-	def send_invoice(self, itemsList):
+	def send_invoice(self, memo, itemsList):
 		data = dict(
 			items=itemsList,
-			customer=self.customer_id
+			customer=self.customer_id,
+			memo=memo
 		)
 		invoice = simplify.Invoice.create(data)
 		ret = Invoice.create(

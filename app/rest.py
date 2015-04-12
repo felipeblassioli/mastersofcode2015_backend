@@ -45,8 +45,10 @@ def invoices(user_id):
 		invs = [ i.to_json() for i in user.invoices2 ]
 		return jsonify(dict(invoices=invs))
 	elif request.method == 'POST':
-		listItems = request.get_json()['list_items']
-		invoice = user.send_invoice(listItems)
+		j = request.get_json()
+		memo = j['memo']
+		listItems = j['list_items']
+		invoice = user.send_invoice(memo, listItems)
 		return jsonify(invoice.to_json())
 
 from .services import Product
