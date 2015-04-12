@@ -19,9 +19,10 @@
 		{% endfor %}
 		</ul>
 		<h1>Or add a custom product</h1>
+		<input id="prod-qty" class="transaction-product-input" onkeyup="removeLetters($(this))" type="text" placeholder="qty" value="1"/>
 		<input type="text" id="prod-name" class="transaction-product-input" placeholder="Product name">
 		<input type="text" id="prod-price" class="transaction-product-input" onkeyup="removeLetters($(this))" placeholder="Item price">
-		<span id="transaction_add" class="glyphicon glyphicon-plus btn" title="Click to add custom product" onclick="addCustomProd($('#prod-name'),$('#prod-price'))"></span>
+		<span id="transaction_add" class="glyphicon glyphicon-plus btn" title="Click to add custom product" onclick="addCustomProd($('#prod-name'),$('#prod-price'), $('#prod-qty'))"></span>
 	</div>
 	<div id="transaction_customer" class="half">
 		<span class="header">

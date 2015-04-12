@@ -230,16 +230,24 @@ ul {
 	width: 90%;
 }
 
+#prod-qty {
+	width: 10%;
+	display: inline-block;
+	margin-right: 0;
+	padding: 10px; 
+}
+
 #prod-name {
-	width: 57%;
+	width: 52%;
+	margin-left: 1%;
 	display: inline-block;
 	margin-right: 0;
 	padding: 10px;
 }
 
 #prod-price {
-	width: 25%;
-	margin-left: 2%;
+	width: 22%;
+	margin-left: 1%;
 	display: inline-block;
 	margin-right: 0;
 	padding: 10px;

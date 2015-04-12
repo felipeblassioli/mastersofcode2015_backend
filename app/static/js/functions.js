@@ -1,12 +1,18 @@
-function addCustomProd(pname, pprice) {
+function addCustomProd(pname, pprice, pqty) {
 	if ($(pname).val() != '' && $(pprice).val() != '') {
 		var prod = {
 			'name': $(pname).val(),
 			'price': $(pprice).val()
 		};
+		if (pqty.val() != '') {
+			prod.qty = pqty.val()
+		} else {
+			prod.qty = "1"
+		}
 		addProduct(prod);
 		$(pname).val('');
 		$(pprice).val('');
+		$(pqty).val('');
 	} else {
 		alert("Invalid Input :(");
 	}
@@ -76,23 +82,25 @@ function send(e){
 	var listItems = $("#transaction_customer .ovf-list li");
 	for (var i = 0; i < listItems.length; i++) {
 		var item = {};
-		if ($(listItems[i]).find(".product-image img").length > 0) {
-			item.name = $(listItems[i]).find(".product-image img").attr('src'); 
-		};
+		/*if ($(listItems[i]).find(".product-image img").length > 0) {
+			item.name = $(listItems[i]).find(".product-image img").attr('src');
+			console.log($(listItems[i]).find(".product-image img")); 
+		};*/
 		item.description = $(listItems[i]).find(".product-name").html();
 		item.quantity = $(listItems[i]).find(".product-qty").html().replace(/[^0-9.,]/g, '');
-		item.amount = $(listItems[i]).find(".product-price").html().replace(/[^0-9.,]/g, '');
+		//item.amount = toString(parseFloat($(listItems[i]).find(".product-price").html().replace(/[^0-9.,]/g, '')));
+		item.amount = 1;
 		answer.list_items.push(item);
 	}
 	console.log(answer);
+	data = JSON.stringify(answer);
 	$.ajax
     ({
         type: "POST",
         url: "/rest/user/2/invoice/",
         dataType: 'json',
         contentType: 'application/json',
-        async: false,
-        data: answer,
+        data: data,
         success: function () {
 
         }
