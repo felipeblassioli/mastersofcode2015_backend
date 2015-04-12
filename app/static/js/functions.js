@@ -89,7 +89,7 @@ function send(e){
 		item.description = $(listItems[i]).find(".product-name").html();
 		item.quantity = $(listItems[i]).find(".product-qty").html().replace(/[^0-9.,]/g, '');
 		//item.amount = toString(parseFloat($(listItems[i]).find(".product-price").html().replace(/[^0-9.,]/g, '')));
-		item.amount = "1";
+		//item.amount = "1";
 		answer.list_items.push(item);
 	}
 	console.log(answer);
