@@ -15,11 +15,18 @@ def index():
 @rest.route('/user/', methods=['POST'])
 def users_index(user_id=None):
 	if request.method == 'GET':
-		return User.get(User.id == user_id)
+		usr = User.get(User.id == user_id)
+		return jsonify(usr.to_json())
 	elif request.method == 'POST':
 		params = request.get_json()
 		print 'params', params
-		usr = User.create(**params)
+		try:
+			usr = User.get(User.email == params['email'])
+			for k,v in params.items():
+				setattr(usr,k,v)
+			usr.save()
+		except User.DoesNotExist:
+			usr = User.create(**params)
 		print usr
 		return jsonify(usr.to_json())
 
@@ -29,3 +36,14 @@ def payments():
 		pass
 	elif request.method == 'POST':
 		return "POST payments"
+
+@rest.route('/user/<user_id>/invoice/', methods=['GET','POST'])
+def invoices(user_id):
+	user = User.get(User.id == user_id)
+	if request.method == 'GET':
+		invs = [ i.to_json() for i in user.invoices2 ]
+		return jsonify(dict(invoices=invs))
+	elif request.method == 'POST':
+		listItems = request.get_json()['list_items']
+		invoice = user.send_invoice(listItems)
+		return jsonify(invoice.to_json())

@@ -15,6 +15,7 @@ setup(
         'Flask>=0.10',
         'flask-peewee>=0.6.6',
         'flask-classy>=0.6.8',
-        'simplifycommerce-sdk-python'
+        'simplifycommerce-sdk-python',
+        'Flask-Admin',
     ],
 )

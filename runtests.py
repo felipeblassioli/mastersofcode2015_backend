@@ -26,7 +26,7 @@ class ModCabritoTestCase(unittest.TestCase):
 		rv = self.post_json('/user/',data)
 		user = loads(rv.data)
 
-		rv = self.app.get('/rest/user/'+user['id'])
+		rv = self.app.get('/rest/user/'+str(user['id']))
 		print rv.data
 
 	def test_newclient_do_first_payment(self):

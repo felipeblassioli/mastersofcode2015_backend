@@ -16,24 +16,28 @@ import simplify
 #simplify.public_key = "YOUR_PUBLIC_API_KEY"
 #simplify.private_key = "YOUR_PRIVATE_API_KEY"
 
-# invoice = simplify.Invoice.create({
-#     "memo" : "This is a memo",
-#     "items" : [
-#         {
-#             "amount" : "5504",
-#             #"tax" : "[TAX ID]",
-#             "quantity" : "1"
-#         }
-#     ],
-#     "email" : "felipeblassioli@gmail.com",
-#     "name" : "Felipe Blassioli",
-#     "suppliedDate" : "2394839384000",
-#     "note" : "This is a note",
-#     "reference" : "Ref2",
-#     "currency" : "USD"
-# })
-# print invoice
-
+invoice = simplify.Invoice.create({
+    "memo" : "This is a memo",
+    "items" : [
+        {
+            "amount" : "5504",
+            #"tax" : "[TAX ID]",
+            "quantity" : "1"
+        }
+    ],
+    "email" : "felipeblassioli@gmail.com",
+    "name" : "Felipe Blassioli",
+    "suppliedDate" : "2394839384000",
+    "note" : "This is a note",
+    "reference" : "Ref2",
+    "currency" : "USD"
+})
+print invoice
+print type(invoice)
+from json import dumps,loads
+print loads(str(invoice))
+import sys
+sys.exit(1)
  # Status of the invoice. DRAFT - All newly created invoices are created in DRAFT. To send the invoice you must set the invoice status to OPEN. 
  # OPEN - Invoice has not been processed and can have invoice items added to it. 
  # PAID = Invoice has been paid. UNPAID = Invoice was not paid when the card was processed. System will try up to 5 times to process the card. 
